@@ -1,0 +1,2 @@
+
+{  "acknowledged" : true,  "deletedCount" : 1,  "help" : [object Function] }

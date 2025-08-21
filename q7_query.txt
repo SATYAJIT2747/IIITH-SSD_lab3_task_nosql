@@ -1,0 +1,14 @@
+console.log(JSON.stringify(
+  db.sales.aggregate([
+    { $project: {
+        purchaseMethod: 1,
+        distinct_items: { $size: { $ifNull: [ { $setUnion: "$items.name" }, [] ] } }
+    }},
+    { $group: {
+        _id: "$purchaseMethod",
+        avg_distinct_items: { $avg: "$distinct_items" }
+    }},
+    { $project: { _id: 0, purchaseMethod: "$_id", avg_distinct_items: { $round: ["$avg_distinct_items", 2] } } },
+    { $sort: { avg_distinct_items: -1, purchaseMethod: 1 } }
+  ]).toArray()
+))

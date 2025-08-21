@@ -1,0 +1,12 @@
+console.log(JSON.stringify(
+  db.sales.aggregate([
+    { $unwind: "$items" },
+    { $group: {
+        _id: "$storeLocation",
+        revenue: { $sum: { $multiply: ["$items.price", "$items.quantity"] } }
+    }},
+    { $project: { _id: 0, storeLocation: "$_id", revenue: { $toDouble: "$revenue" } } },
+    { $sort: { revenue: -1, storeLocation: 1 } },
+    { $limit: 5 }
+  ]).toArray()
+))

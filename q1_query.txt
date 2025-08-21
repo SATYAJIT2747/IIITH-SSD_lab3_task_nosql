@@ -1,0 +1,1 @@
+printjsononeline(db.sales_work.insertOne({orderId: "LAB_2025201055", saleDate: new Date(), items: [{name: "Mousepad", tags: ["lab","custom"], price: 10.0, quantity: 1}], storeLocation: "Training", customer: { email: "satyajit.priyadarshi@students.iiit.ac.in", age: 23, satisfaction: 4}, couponUsed: false, purchaseMethod: "Online"}))

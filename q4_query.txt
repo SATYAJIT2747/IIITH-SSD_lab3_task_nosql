@@ -1,0 +1,3 @@
+printjsononeline(
+db.sales_work.deleteOne({ orderId: "LAB_2025201055" })
+)

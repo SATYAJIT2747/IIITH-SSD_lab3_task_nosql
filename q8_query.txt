@@ -1,0 +1,6 @@
+
+console.log(db.sales.aggregate([
+  { $unwind: "$items" },
+  { $unwind: "$items.tags" },
+  { $group: { _id: null, tags: { $addToSet: "$items.tags" } } }
+]).next().tags.sort())

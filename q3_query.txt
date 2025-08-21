@@ -1,0 +1,9 @@
+printjsononeline(
+db.sales_work.updateOne(
+  { orderId: "LAB_2025201055" },
+  {
+    $inc: { "items.0.quantity": 2 },
+    $set: { "customer.satisfaction": 5 }
+  }
+)
+)

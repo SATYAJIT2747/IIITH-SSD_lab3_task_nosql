@@ -1,0 +1,12 @@
+printjsononeline(
+db.sales_work.aggregate([
+  { $match: { orderId: "LAB_2025201055" } },
+  { $project: {
+      orderId: 1,
+      storeLocation: 1,
+      purchaseMethod: 1,
+      item0: { $arrayElemAt: ["$items.name", 0] },
+      _id: 0
+  }}
+]).next()
+)
